@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #ffe6f2;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+        }
+
+        .envelope-container {
+            position: relative;
+            width: 500px;
+            height: 300px;
+            margin-bottom: 10px;
+        }
+
+        #envelope {
+            font-size: 200px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        #envelope:hover {
+            transform: scale(1.2) translateY(-10px);
+        }
+
+        #letter {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            width: 200%;
+            max-width: 600px;
+            animation: slideUp 1s ease-out;
+            font-size: 18px;
+        }
+
+        #letter h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        #letter p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+
+        @keyframes slideUp {
+            from { transform: translate(-50%, 100%); opacity: 0; }
+            to { transform: translate(-50%, -50%); opacity: 1; }
+        }
+
+        .hearts {
+            position: fixed;
+            pointer-events: none;
+            font-size: 42px;
+            animation: float 3s infinite ;
+        }
+        
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        #love {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            background: #ff4081;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        #finalMessage {
+            display: none;
+            margin-bottom: 90px;
+            margin-left: 10%;
+            margin-right: 10%;
+
+            
+            font-size: 32px;
+            color: #ff4081;
+            text-align: center;
+            animation: pulse 3s infinite linear;
+        }
+        #lovely {
+            margin-left: 10%;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope-container">
+        <div id="envelope">📩</div>
+    </div>
+
+    <div id="letter">
+        <h2>Meri Gulab Jamun 😘😘🌍🌍🫂🫂</h2>
+        <p>Happy Propose Day💖❤❤ I LOVE YOU so muchh babyyy gg 💘💘💘❤🤗🤗🤗 Meriiii sohniii sohniiii bugggiiiiiii😘😘 Meriii Jannnn🌍🌍🌍🌍🫂🫂🫂 Main apni Babyyyy nu bhott Pyaar krdnnn 💕💕💕💝💝💝💝 meri Zindagi da sab ton sohna hissa meri babyy aa 🌼🌼😘😘 meri khushi merii jaanuu mera sabb kujj aaaa💖💖💖 In every life I just want you and onlyy youuu myy lovee❤💍 </p>
+        <p>Yours forever🌍🫂</p>
+    </div>
+
+    <div id="love">
+        <h1>Will You Be My Valentine? 💖</h1>
+        <div class="btn-container">
+            <button class="btn" id="yesBtn">Yes</button>
+            <button class="btn" id="noBtn">No</button>
+        </div>
+    </div>
+    <div id="finalMessage">
+    I Love juuu sweetuuuu 🤗🤗🤗 meriii pandaa😍😍 meriii bambb baddieee😘😘😘 Baddiee tn hai bebuu meriii🤭🤭❤❤❤❤ prr merii babyy tn all in one comboo aaa Cutieee 💞💞shotieeee jehiii pookkiieeee🤗🤗❤❤❤❤ Merii jaanuuu Myy Worldd💘💘💖💖Rab ne menuu ehni pyaarii jehii bebuuu ditiii aaa💝💝💕💕💕🥰🥰🌼🌼💓💓💓
+    <div class="lovely">
+        <h3>ਤੇਰੀ ਅੱਖਾਂ ਵਿੱਚ ਖੋ ਜਾਵਾਂ,<br>
+            ਤੇਰੀ ਜੁਲਫਾਂ ਵਿੱਚ ਉਲਝ ਜਾਵਾਂ।<br>
+            ਤੇਰੇ ਖ਼ਵਾਬਾਂ ਦੀ ਮਹਿਕ ਵਿੱਚ,<br>
+            बस ਸਿਮਟਾ ਮੈਂ ਰਹਿ ਜਾਵਾਂ।<br></h3>
+        </div>
+    </div>
+    
+
+    <script>
+        const envelope = document.getElementById('envelope');
+        const letter = document.getElementById('letter');
+        const love = document.getElementById('love');
+        const noBtn = document.getElementById('noBtn');
+        const finalMessage = document.getElementById('finalMessage');
+
+        envelope.addEventListener('click', () => {
+            envelope.style.display = 'none';
+            letter.style.display = 'block';
+            
+            setTimeout(() => {
+                letter.style.display = 'none';
+                createHearts();
+                mylove();
+            }, 2500);
+        });
+
+        function createHearts() {
+            const heartEmojis = ['💖', '💕', '💞', '💓', '💗'];
+            for(let i = 0; i < 100; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'hearts';
+                heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heart.style.fontSize = Math.random() * 50 + 50 + 'px';
+                document.body.appendChild(heart);
+            }
+        }
+
+        function mylove() {
+            love.style.display = 'flex';
+            
+            noBtn.addEventListener('mouseover', () => {
+                noBtn.textContent = 'Yes';
+                noBtn.style.transform = 'scale(1.2)';
+                noBtn.style.background = '#ff1493';
+            });
+
+            noBtn.addEventListener('mouseout', () => {
+                noBtn.textContent = 'No';
+                noBtn.style.transform = 'scale(1)';
+                noBtn.style.background = '#ff4081';
+            });
+
+            // Handle both button clicks
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    love.style.display = 'none';
+                    document.querySelectorAll('.hearts').forEach(h => h.remove());
+                    finalMessage.style.display = 'block';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
